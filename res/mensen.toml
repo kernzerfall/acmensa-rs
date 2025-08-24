@@ -1,0 +1,8 @@
+[endpoint]
+host = "https://www.studierendenwerk-aachen.de"
+timeplan = "de/gastronomie/mensen-und-cafeterien.html"
+
+[endpoint.menu]
+prefix = "files/content/Downloads/Gastronomie/Speiseplaene"
+suffix_template.de = "speiseplan_mensa_{{name}}_{{week}}_woche.html"
+suffix_template.en = "menu_mensa_{{name}}_{{week}}_week.html"

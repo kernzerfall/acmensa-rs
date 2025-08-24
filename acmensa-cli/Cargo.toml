@@ -1,0 +1,23 @@
+[package]
+name = "acmensa-cli"
+version = "0.1.0"
+authors = ["kernzerfall <georg@kernzerfall.eu>"]
+edition = "2024"
+
+[features]
+default = ["json"]
+json = ["dep:serde_json"]
+json-schema = ["json", "libacmensa/json-schema"]
+
+[dependencies]
+anyhow = "1.0.99"
+chrono = "0.4.41"
+clap = { version = "4.5.45", features = ["derive"] }
+lazy_static = "1.5.0"
+libacmensa = { version = "0.1.0", path = "../libacmensa", features = ["scrape"] }
+log = "0.4.27"
+pretty_env_logger = "0.5.0"
+serde = { version = "1.0.219", features = ["derive"] }
+serde_json = {version = "1.0.143", optional = true }
+tokio = { version = "1.47.1", features = ["full"] }
+toml = "0.9.5"

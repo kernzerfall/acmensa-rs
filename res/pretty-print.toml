@@ -1,0 +1,96 @@
+meal_subtext_colour = "240"
+
+[[meal_map]]
+type = "Wok"
+
+[meal_map.format.main]
+emoji = "🍜"
+colour = "120"
+
+[meal_map.format.alt_veg]
+emoji = "🥘"
+colour = "150"
+
+[[meal_map]]
+type = "PizzaTag"
+
+[meal_map.format.main]
+emoji = "🍕"
+colour = "120"
+
+[meal_map.format.alt_veg]
+emoji = "💀"
+colour = "150"
+
+[[meal_map]]
+type = "Klassiker"
+
+[meal_map.format.main]
+emoji = "🍗"
+colour = "42"
+
+[meal_map.format.alt_veg]
+emoji = "💀"
+colour = "161"
+
+[[meal_map]]
+type = "Tellergericht"
+
+[meal_map.format.main]
+emoji = "🍲"
+colour = "42"
+
+[[meal_map]]
+type = "BurgerClassics"
+
+[meal_map.format.main]
+emoji = "🍔"
+colour = "216"
+
+[meal_map.format.alt_veg]
+emoji = "🍆"
+colour = "245"
+
+[[meal_map]]
+type = "BurgerWoche"
+
+[meal_map.format.main]
+emoji = "🍔"
+colour = "216"
+
+[meal_map.format.alt_veg]
+emoji = "🍆"
+colour = "245"
+
+[[meal_map]]
+type = "Empfehlung"
+
+[meal_map.format.main]
+emoji = "🍝"
+colour = "216"
+
+[meal_map.format.alt_veg]
+emoji = "💀"
+colour = "161"
+
+[[meal_map]]
+type = "Vegetarisch"
+
+[meal_map.format.main]
+emoji = "🥬"
+colour = "245"
+
+[[meal_map]]
+type = "Unbekannt"
+
+[meal_map.format.main]
+emoji = "👽"
+colour = "240"
+
+[meal_def.main]
+emoji = "👽"
+colour = "42"
+
+[side_style]
+head_colour = "222"
+subtext_colour = "223"

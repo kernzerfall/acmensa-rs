@@ -1,0 +1,14 @@
+[workspace]
+resolver = "3"
+members = ["libacmensa", "acmensa-cli"]
+
+[profile.release]
+strip = true
+opt-level = 3
+lto = true
+panic = "abort"
+
+[profile.release-size]
+inherits = "release"
+opt-level = "s"
+codegen-units = 1 # for obvious reasons, this makes compilation very slow
