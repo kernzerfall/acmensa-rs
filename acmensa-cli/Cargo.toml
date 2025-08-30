@@ -1,7 +1,8 @@
 [package]
 name = "acmensa-cli"
 version = "0.1.0"
-authors = ["kernzerfall <georg@kernzerfall.eu>"]
+authors = ["kernzerfall"]
+license = "EUPL-1.2-or-later"
 edition = "2024"
 
 [features]
