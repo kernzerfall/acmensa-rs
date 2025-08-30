@@ -1,5 +1,8 @@
 #!/bin/bash
+# Exports all available menus for all Mensen into subfolders (from cwd)
+# (intended to be used with systemd timers for caching)
 
+unset mensen
 declare -a mensen
 mensen=(
   academica
