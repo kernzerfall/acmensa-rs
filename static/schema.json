@@ -1,0 +1,177 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DayData",
+  "description": "DayData is like DayView but owns its data. It holds\ndata for dishes for a single day.",
+  "type": "object",
+  "properties": {
+    "main_dishes": {
+      "description": "Main dishes array (Klassiker, Vegetarisch, Wok, ...)",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/MealInfo"
+      }
+    },
+    "side_dishes": {
+      "description": "Side dishes array (Sättigungsbeilagen/Gemüsebeilagen)",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/SideInfo"
+      }
+    }
+  },
+  "required": [
+    "main_dishes",
+    "side_dishes"
+  ],
+  "$defs": {
+    "AllergenList": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "MealInfo": {
+      "type": "object",
+      "properties": {
+        "allergens": {
+          "description": "Sorted, deduplicated list of allergens.",
+          "$ref": "#/$defs/AllergenList"
+        },
+        "price": {
+          "description": "Meal price (unparsed directly from site). Usually has the form \"{:.02f} €\".",
+          "type": "string"
+        },
+        "subtext": {
+          "description": "Secondary meal description (e.g. sauces, sides etc.).",
+          "type": "string"
+        },
+        "text": {
+          "description": "Main meal description.",
+          "type": "string"
+        },
+        "type": {
+          "description": "Type of meal (e.g. Klassiker).",
+          "$ref": "#/$defs/MealType"
+        },
+        "vegan": {
+          "description": "Vegan indication. Especially needed since sometimes \"normal\" meals are\nhijacked and replaced with vegan ones. Secondary heuristics are defined\nin `libacmensa::scrape::vegan_detektiv`.",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "type",
+        "text",
+        "subtext",
+        "price",
+        "allergens",
+        "vegan"
+      ]
+    },
+    "MealType": {
+      "oneOf": [
+        {
+          "description": "Classic dish (usually includes meat).",
+          "type": "string",
+          "const": "Klassiker"
+        },
+        {
+          "description": "Stew (incl. vegan options).",
+          "type": "string",
+          "const": "Tellergericht"
+        },
+        {
+          "description": "Suggestion of the day (incl. vegan options).",
+          "type": "string",
+          "const": "Empfehlung"
+        },
+        {
+          "description": "Wok (incl. vegan options).",
+          "type": "string",
+          "const": "Wok"
+        },
+        {
+          "description": "Classic burgers (Cheeseburger/Veggieburger/Chicken burger).",
+          "type": "string",
+          "const": "BurgerClassics"
+        },
+        {
+          "description": "Burger of the week (special offer).",
+          "type": "string",
+          "const": "BurgerWoche"
+        },
+        {
+          "description": "Pizza of the day (special offer).",
+          "type": "string",
+          "const": "PizzaTag"
+        },
+        {
+          "description": "Standard vegetarian meal.",
+          "type": "string",
+          "const": "Vegetarisch"
+        },
+        {
+          "description": "Catch-all for categories that could not be parsed.",
+          "type": "string",
+          "const": "Unbekannt"
+        }
+      ]
+    },
+    "SideAlternative": {
+      "type": "object",
+      "properties": {
+        "allergens": {
+          "description": "Sorted, deduplicated list of allergens.",
+          "$ref": "#/$defs/AllergenList"
+        },
+        "text": {
+          "description": "Main alternative description.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "text",
+        "allergens"
+      ]
+    },
+    "SideInfo": {
+      "type": "object",
+      "properties": {
+        "alternatives": {
+          "description": "Alternative options for side.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/SideAlternative"
+          }
+        },
+        "type": {
+          "description": "Type of side (Sättigungs-/Gemüsebeilage)",
+          "$ref": "#/$defs/SideType"
+        }
+      },
+      "required": [
+        "type",
+        "alternatives"
+      ]
+    },
+    "SideType": {
+      "oneOf": [
+        {
+          "description": "Main side (Sättigungsbeilage).",
+          "type": "string",
+          "const": "Main"
+        },
+        {
+          "description": "Secondary side (Gemüsebeilage).",
+          "type": "string",
+          "const": "Secondary"
+        },
+        {
+          "description": "Catch-all for sides that could not be parsed.",
+          "type": "string",
+          "const": "Unknown"
+        }
+      ]
+    }
+  }
+}
